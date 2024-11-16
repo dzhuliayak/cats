@@ -28,6 +28,9 @@ def set_image():
         label.image = img
 
 
+def exit():
+    window.destroy()
+
 
 window=Tk()
 window.title("Cats!")
@@ -37,9 +40,17 @@ window.geometry("600x520")
 label=Label()
 label.pack()
 
-update_button=Button(text="обновить", command=set_image)
-update_button.pack()
+# update_button=Button(text="обновить", command=set_image)
+# update_button.pack()
 
+menu_bar=Menu(window)
+window.config(menu=menu_bar)
+
+file_menu=Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label="файл", menu=file_menu)
+file_menu.add_command(label="загрузить фото", command=set_image)
+file_menu.add_separator()
+file_menu.add_command(label="выход", command=exit)
 
 url = "https://cataas.com/cat"
 
