@@ -1,11 +1,22 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import requests
-from io import Bytes
+from io import Bytes, BytesIO
 
-from pygame.examples.aliens import load_image
+from bottle import response
+from pygame.examples.cursors import image
 
-IOError
+
+def loade_image():
+    try:
+        response=requests.get(url)
+        response.raise_for_status()
+        image_data=BytesIO(response.content)
+        img =Image.open(image_data)
+        return  ImageTk.PhotoImage(img)
+    except Exception as e:
+        print(f"произошла ошибка : {e}")
+        return None
 
 
 window=Tk()
