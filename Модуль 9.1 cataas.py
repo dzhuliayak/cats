@@ -4,6 +4,7 @@ import requests
 from io import BytesIO
 
 from bottle import response
+from pygame.display import update
 from pygame.examples.cursors import image
 
 def load_image(url):
@@ -18,6 +19,15 @@ def load_image(url):
         return None
 
 
+def set_image():
+    img = load_image(url)
+
+    if img:
+        label.config(image=img)
+        label.image = img
+
+
+
 window=Tk()
 window.title("Cats!")
 window.geometry("600x480")
@@ -26,12 +36,12 @@ window.geometry("600x480")
 label=Label()
 label.pack()
 
+update_button=Button(text="обновить", command=set_image)
+update_button.pack()
+
+
 url = "https://cataas.com/cat"
-img = load_image(url)
 
-if img:
-    label.config(image=img)
-    label.image=img
-
+set_image()# функция должна быть и здесь вызвана, чтобы вначале высветилась картинка
 
 window.mainloop()
