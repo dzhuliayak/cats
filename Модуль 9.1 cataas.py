@@ -55,6 +55,4 @@ file_menu.add_command(label="выход", command=exit)
 
 url = "https://cataas.com/cat"
 
-set_image()# функция должна быть и здесь вызвана, чтобы вначале высветилась картинка
-
 window.mainloop()
